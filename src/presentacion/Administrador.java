@@ -1204,7 +1204,7 @@ public class Administrador extends javax.swing.JFrame {
             tb_lista.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{
-                        "Codigo", "Nombre", "Precio", "Unidad"
+                        "Host", "IP", "Mask"
                     }
             ));
 
@@ -1230,13 +1230,14 @@ public class Administrador extends javax.swing.JFrame {
             tb_lista1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{
-                        "Codigo", "Nombre", "Precio", "Unidad"
+                        "Host", "IP", "Mask"
                     }
             ));
 
             // TODO add your handling code here:
-            for (Product t : inventario) {
-                Object[] row = {t.getId(), t.getDescripcion(), t.getPrecio(), t.getUnidad()};
+            for (PC p : pcs) {
+                Object[] row = {p.getHostName(), p.getDireccionIP(), p.getMaskRed()};
+
                 DefaultTableModel modelo = (DefaultTableModel) tb_lista1.getModel();
                 modelo.addRow(row);
                 tb_lista1.setModel(modelo);

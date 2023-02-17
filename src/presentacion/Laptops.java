@@ -6,6 +6,17 @@ public class Laptops extends PC {
     private String defPant;
     private boolean RGB;
 
+    public Laptops() {
+        super();
+    }
+
+    public Laptops(String Marca, String defPant, boolean RGB, String hostName, String direccionIP, String maskRed) {
+        super(hostName, direccionIP, maskRed);
+        this.Marca = Marca;
+        this.defPant = defPant;
+        this.RGB = RGB;
+    }
+
     public String getMarca() {
         return Marca;
     }
