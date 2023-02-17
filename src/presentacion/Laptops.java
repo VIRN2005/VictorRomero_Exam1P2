@@ -34,7 +34,7 @@ public class Laptops extends PC {
     public String toString() {
         return "Marca: " + Marca + "\n"
                 + "Definicion Pantalla: " + defPant + "\n"
-                + "RGB=" + RGB;
+                + "RGB: " + RGB;
     }
 
 }

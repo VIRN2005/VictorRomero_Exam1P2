@@ -2,9 +2,9 @@ package presentacion;
 
 public class PC {
 
-    private String hostName;
-    private String direccionIP;
-    private String maskRed;
+    protected String hostName;
+    protected String direccionIP;
+    protected String maskRed;
 
     public PC() {
     }

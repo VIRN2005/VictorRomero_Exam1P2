@@ -4,14 +4,14 @@ public class PC_Escritorio extends PC {
 
     private int RAM;
     private int almacenamiento;
-    private int tipoAlmacenamiento;
+    private String tipoAlmacenamiento;
     private boolean tarjGrafica;
 
     public PC_Escritorio() {
         super();
     }
 
-    public PC_Escritorio(int RAM, int almacenamiento, int tipoAlmacenamiento, boolean tarjGrafica, String hostName, String direccionIP, String maskRed) {
+    public PC_Escritorio(int RAM, int almacenamiento, String tipoAlmacenamiento, boolean tarjGrafica, String hostName, String direccionIP, String maskRed) {
         super(hostName, direccionIP, maskRed);
         this.RAM = RAM;
         this.almacenamiento = almacenamiento;
@@ -35,11 +35,11 @@ public class PC_Escritorio extends PC {
         this.almacenamiento = almacenamiento;
     }
 
-    public int getTipoAlmacenamiento() {
+    public String getTipoAlmacenamiento() {
         return tipoAlmacenamiento;
     }
 
-    public void setTipoAlmacenamiento(int tipoAlmacenamiento) {
+    public void setTipoAlmacenamiento(String tipoAlmacenamiento) {
         this.tipoAlmacenamiento = tipoAlmacenamiento;
     }
 
