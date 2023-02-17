@@ -1284,9 +1284,10 @@ public class Administrador extends javax.swing.JFrame {
         pn_eliminar.setVisible(false);
         pn_nuevo.setVisible(false);
         pn_listar.setVisible(false);
-        pn_modificar.setVisible(true);
-
-        llenarcombo();
+        pn_modificar.setVisible(false);
+        this.setVisible(false);
+        
+        
 
 
     }//GEN-LAST:event_exitTxt3MouseClicked
