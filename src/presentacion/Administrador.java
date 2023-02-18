@@ -1292,12 +1292,12 @@ public class Administrador extends javax.swing.JFrame {
         for (PC p : pcs) {
         p.getDireccionIP();
         }
-        do{
+//        do{
             
             
-        if (command = "show")
-                System.out.println(pcs);
-            }while(command != "Exit" || )
+//        if (command = "show")
+//                System.out.println(pcs);
+//            }while(command != "Exit" || )
 
     }//GEN-LAST:event_exitTxt3MouseClicked
 
