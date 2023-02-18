@@ -43,7 +43,7 @@ public class Laptops extends PC {
 
     @Override
     public String toString() {
-        return "Marca: " + Marca + "\n"
+        return super.toString() + "\nMarca: " + Marca + "\n"
                 + "Definicion Pantalla: " + defPant + "\n"
                 + "RGB: " + RGB;
     }

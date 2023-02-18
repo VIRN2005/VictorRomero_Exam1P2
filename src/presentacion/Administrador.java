@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
@@ -1210,11 +1211,12 @@ public class Administrador extends javax.swing.JFrame {
 
             // TODO add your handling code here:
             String cc, n, p, u;
-            for (Product t : inventario) {
-                Object[] row = {t.getId(), t.getDescripcion(), t.getPrecio(), t.getUnidad()};
-                DefaultTableModel modelo = (DefaultTableModel) tb_lista.getModel();
+            for (PC pc : pcs) {
+                Object[] row = {pc.getHostName(), pc.getDireccionIP(), pc.getMaskRed()};
+
+                DefaultTableModel modelo = (DefaultTableModel) tb_lista1.getModel();
                 modelo.addRow(row);
-                tb_lista.setModel(modelo);
+                tb_lista1.setModel(modelo);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -1271,12 +1273,13 @@ public class Administrador extends javax.swing.JFrame {
 
     private void llenarcombo() {
         cb_productos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
-        for (Product t : inventario) {
-            DefaultComboBoxModel modelo
-                    = (DefaultComboBoxModel) cb_productos.getModel();
-            modelo.addElement(t);
-            cb_productos.setModel(modelo);
-        }
+
+//        for (Product t : inventario) {
+//            DefaultComboBoxModel modelo
+//                    = (DefaultComboBoxModel) cb_productos.getModel();
+//            modelo.addElement(t);
+//            cb_productos.setModel(modelo);
+//        }
     }
 
     private void exitTxt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTxt3MouseClicked
@@ -1286,18 +1289,45 @@ public class Administrador extends javax.swing.JFrame {
         pn_listar.setVisible(false);
         pn_modificar.setVisible(false);
         this.setVisible(false);
-        
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la IP a seleccionar: "));
-        
-        for (PC p : pcs) {
-        p.getDireccionIP();
+
+        int opcion = 0;
+        try {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la IP a seleccionar: "));
+            System.out.println(showPC());
+
+        } catch (Exception e) {
+            System.out.println("Ringing " + opcion + " with 32 bits of data: \n"
+                    + "Request timed \n"
+                    + "Request timed \n"
+                    + "Request timed \n"
+                    + "Request timed \n");
+            System.out.println(e.getMessage());
         }
-//        do{
-            
-            
-//        if (command = "show")
-//                System.out.println(pcs);
-//            }while(command != "Exit" || )
+
+        String command;
+        do {
+            System.out.println(">> Ingrese la posicion: ");
+            int pos = leer.nextInt();
+
+            System.out.println(">> Ingrese el CMD: ");
+            command = leer.next();
+
+            System.out.println(pcs.get(pos).getHostName() + " # " + command);
+
+            command = leer.next();
+
+            if (command == "exit" || command == "Exit") {
+                this.setVisible(true);
+            }
+            if (command == "show" || command == "Show") {
+                System.out.println(pcs);
+            }
+            if (command == "ping" || command == "Ping") {
+
+            } else {
+                System.out.println("OPCION NO VALIDA!");
+            }
+        } while (command != "Exit" || command != "exit");
 
     }//GEN-LAST:event_exitTxt3MouseClicked
 
@@ -1388,22 +1418,22 @@ public class Administrador extends javax.swing.JFrame {
 
     private void cb_productosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_productosItemStateChanged
         // TODO add your handling code here:
-        if (evt.getStateChange() == 2) {
-            Product t = (Product) cb_productos.getSelectedItem();
-            tf_nombre1.setText(t.getDescripcion());
-            ff_precio1.setText(Double.toString(t.getPrecio()));
-            tf_unidad1.setText(t.getUnidad());
-        }
+//        if (evt.getStateChange() == 2) {
+//            Product t = (Product) cb_productos.getSelectedItem();
+//            tf_nombre1.setText(t.getDescripcion());
+//            ff_precio1.setText(Double.toString(t.getPrecio()));
+//            tf_unidad1.setText(t.getUnidad());
+//        }
     }//GEN-LAST:event_cb_productosItemStateChanged
 
     private void loginBtnTxt4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxt4MouseClicked
         // TODO add your handling code here:
         if (tb_lista1.getSelectedRow() >= 0) {
-            int r = JOptionPane.showConfirmDialog(tb_lista1, "Desea elimnar producto????", "Eliminar producto", YES_NO_OPTION);
+            int r = JOptionPane.showConfirmDialog(tb_lista1, "Desea eliminar producto????", "Eliminar producto", YES_NO_OPTION);
             if (r == 0) {
-                inventario.remove(tb_lista1.getSelectedRow());
+                pcs.remove(tb_lista1.getSelectedRow());
                 listarTabla();
-                JOptionPane.showMessageDialog(this, "Producto Elimniado exitosamente");
+                JOptionPane.showMessageDialog(this, "Producto Eliminado exitosamente");
 
             }
 
@@ -1563,6 +1593,7 @@ public class Administrador extends javax.swing.JFrame {
                             tf_RED1.getText(),
                             tf_Name1.getText())
             );
+            JOptionPane.showMessageDialog(this, "Producto agregado exitosamente");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1625,9 +1656,26 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
+    public String showPC() {
+        String chain = "";
+
+        for (PC pc : pcs) {
+            if (pc instanceof PC) {
+                chain += pcs.indexOf(pc) + " -" + pc + "\n";
+            }
+        }
+
+        return chain;
+    }
+
+    static Scanner leer = new Scanner(System.in);
     int r;
     int RGB;
-    ArrayList<Product> inventario = new ArrayList();
     ArrayList<PC> pcs = new ArrayList<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
