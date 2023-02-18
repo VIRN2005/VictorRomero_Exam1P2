@@ -1287,8 +1287,17 @@ public class Administrador extends javax.swing.JFrame {
         pn_modificar.setVisible(false);
         this.setVisible(false);
         
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la IP a seleccionar: "));
         
-
+        for (PC p : pcs) {
+        p.getDireccionIP();
+        }
+        do{
+            
+            
+        if (command = "show")
+                System.out.println(pcs);
+            }while(command != "Exit" || )
 
     }//GEN-LAST:event_exitTxt3MouseClicked
 
@@ -1350,27 +1359,7 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_IPActionPerformed
 
     private void loginBtnTxt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxt3MouseClicked
-        // TODO add your handling code here:
-
-        inventario.get(
-                cb_productos.getSelectedIndex()
-        ).setDescripcion(tf_nombre1.getText());
-
-        inventario.get(
-                cb_productos.getSelectedIndex()
-        ).setPrecio(Double.parseDouble(ff_precio1.getText()));
-
-        inventario.get(
-                cb_productos.getSelectedIndex()
-        ).setUnidad(tf_unidad1.getText());
-        ff_precio1.setText("");
-        tf_nombre1.setText("");
-        tf_unidad1.setText("");
-        JOptionPane.showMessageDialog(this, "Producto Modificado exitosamente");
-
-        llenarcombo();
-
-
+        // TODO add your handling code here
     }//GEN-LAST:event_loginBtnTxt3MouseClicked
 
     private void loginBtnTxt3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxt3MouseEntered
