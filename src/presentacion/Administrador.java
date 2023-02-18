@@ -1323,7 +1323,16 @@ public class Administrador extends javax.swing.JFrame {
                 System.out.println(pcs);
             }
             if (command == "ping" || command == "Ping") {
-
+                try {
+                    pc.Ping();
+                } catch (Exception e) {
+                    System.out.println("Ringing " + opcion + " with 32 bits of data: \n"
+                            + "Reply from " + opcion + ": Destination host Unreachable"
+                            + "Reply from " + opcion + ": Destination host Unreachable"
+                            + "Reply from " + opcion + ": Destination host Unreachable"
+                            + "Reply from " + opcion + ": Destination host Unreachable");
+                    System.out.println(e.getMessage());
+                }
             } else {
                 System.out.println("OPCION NO VALIDA!");
             }
@@ -1673,11 +1682,20 @@ public class Administrador extends javax.swing.JFrame {
         return chain;
     }
 
+    public int Decimal_a_Binario(int numero) {
+        String Binary = "";
+        if (numero == 0) {
+            return 0;
+        } else {
+            return (numero % 2 + 10 * Decimal_a_Binario(numero / 2));
+        }
+    }
+
     static Scanner leer = new Scanner(System.in);
     int r;
     int RGB;
     ArrayList<PC> pcs = new ArrayList<>();
-
+    PC pc = new PC();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddLAPTOP;
     private javax.swing.JPanel AddPC;
